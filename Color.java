@@ -19,7 +19,6 @@ public class Color {
 		colors.add(color5);
 		colors.add(color6);
 	}
-	Peg pegs;
 	
 	public void setColor(int spot, String replacementColor){
 		colors.set(spot, replacementColor);

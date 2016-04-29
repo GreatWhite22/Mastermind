@@ -1,7 +1,6 @@
 package assignment7;
 
 import java.util.ArrayList;
-import java.awt.*;
 import javax.swing.*;
 import java.applet.Applet;
 
@@ -49,7 +48,6 @@ public class Game extends Applet implements Runnable{
 " Only the first letter of the color is displayed. B for Blue, R for Red, and so forth. When entering guesses you only need to enter the first character of each color as a capital letter." +
 " You have 12 guesses to figure out the secret code or you lose the game.<br><br>" + 
 "Are you ready to play?<p>";
-		JPanel p = new JPanel(new BorderLayout());
 		String s = pt1 + 500 + pt2;		
 		int play = JOptionPane.showConfirmDialog(null,s,"Welcome", JOptionPane.YES_NO_OPTION);
 		if(play == 0){
@@ -63,13 +61,15 @@ public class Game extends Applet implements Runnable{
 	public void play(){
 		String[] guess;
 		Boolean victory = false;
+		Boolean validInput = true;
 		JOptionPane.showMessageDialog(null, "...Generating secret code...");
 		for(int i = 12; i > 0; i--){
 			String s = JOptionPane.showInputDialog("You have " + i + " guesses left\n" +
 				"What is your next guess?\n" + 
 				"Type in the characters for your guess or type history to see previous guesses", "Enter your guess");
 			if ((s != null) && (s.length() > 0)){
-				if(s.equals("history")){
+				s = s.toUpperCase();
+				if(s.equals("HISTORY")){
 					if(history.isEmpty()){
 						JOptionPane.showMessageDialog(null, "You've made no guesses yet");
 						i++;
@@ -80,11 +80,9 @@ public class Game extends Applet implements Runnable{
 					i++;
 					continue;
 				}
-				s = s.toUpperCase();
 				s = s.replaceAll("\\s+","");
 				guess = s.split("(?!^)");
 				if(guess.length == 4){
-					Boolean validInput = true;
 					for(int j = 0; j < 4; j++){
 						if("incorrect input" == code.colors.getColor(guess[j])){
 							validInput = false;
@@ -98,6 +96,11 @@ public class Game extends Applet implements Runnable{
 						i++;
 						continue;
 					}
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Incorrect input enter 4 characters (R,B,G,O,Y,P)");
+					i++;
+					continue;
 				}
 				int[] bw = code.checkGuess(guess);
 				if(bw[0] == 4){
@@ -120,6 +123,7 @@ public class Game extends Applet implements Runnable{
 			}
 			if(0 == JOptionPane.showConfirmDialog(null,"Would you like to play again?", "Mastermind", JOptionPane.YES_NO_OPTION)){
 				start();
+				init();
 				run();
 			}
 			else{
