@@ -1,5 +1,10 @@
 # Mastermind
+
+Connor Lewis - csl735
+
 422C Bonus Project
+
+Repository: https://github.com/GreatWhite22/Mastermind
 
 uses package assignment7
 

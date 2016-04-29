@@ -109,7 +109,7 @@ public class Game extends Applet implements Runnable{
 					break;
 				}
 				else{
-					JOptionPane.showMessageDialog(null, bw[0] + " black " + bw[1] + " white");
+					JOptionPane.showMessageDialog(null, s + " " + bw[0] + " black " + bw[1] + " white");
 					history.add(bw[0] + " black " + bw[1] + " white\n");
 				}
 			}

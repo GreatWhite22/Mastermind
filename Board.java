@@ -3,14 +3,17 @@ package assignment7;
 public class Board {
 	int columns;
 	int rows;
-	Code code = new Code();
+	Code code;
 
 	public Board(){
 		this.columns = 4;
 		this.rows = 12;
+		code = new Code();
 	}
-	public Board(int numRows){
+	
+	public Board(int numCol, int numRows){
 		this.rows = numRows;
-		this.columns = 4;
-	}
+		this.columns = numCol;
+		code = new Code(columns);
+	}	
 }
