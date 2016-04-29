@@ -16,8 +16,8 @@ public class Code {
 	
 	public int[] checkGuess(String[] guess){
 		int[] bw = new int[2];
-		ArrayList<String> code = new ArrayList<String>();
-		code = colorCode;
+		ArrayList<String> code = new ArrayList<String>(colorCode);
+		//code = colorCode;
 		Color checkColor = new Color();
 		int guessLength = guess.length;
 		int black = 0;

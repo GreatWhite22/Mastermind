@@ -19,6 +19,7 @@ public class Color {
 		colors.add(color5);
 		colors.add(color6);
 	}
+	Peg pegs;
 	
 	public void setColor(int spot, String replacementColor){
 		colors.set(spot, replacementColor);
@@ -37,6 +38,7 @@ public class Color {
 	}
 	
 	public String getColor(String color) {
+		//pegs.guesses.add(color);
 		switch(color){
 		case "B": return "blue";
 		case "Y": return "yellow";

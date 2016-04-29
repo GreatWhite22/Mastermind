@@ -46,7 +46,7 @@ public class Game extends Applet implements Runnable{
 " You have 12 guesses to figure out the secret code or you lose the game.<br><br>" + 
 "Are you ready to play?<p>";
 		JPanel p = new JPanel(new BorderLayout());
-		String s = pt1 + 250 + pt2;		
+		String s = pt1 + 500 + pt2;		
 		int play = JOptionPane.showConfirmDialog(null,s,"Welcome", JOptionPane.YES_NO_OPTION);
 		if(play == 0){
 			return true;
@@ -65,6 +65,7 @@ public class Game extends Applet implements Runnable{
 				"Type in the characters for your guess", "Enter your guess");
 			s = s.toUpperCase();
 			guess = s.replaceAll("\\s+", "").split("(?!^)");
+			System.out.println(guess.toString());
 			int[] bw = code.checkGuess(guess);
 			if(bw[0] == 4){
 				JOptionPane.showMessageDialog(null, bw[0] + " black\n" + "You Win!");
@@ -73,5 +74,6 @@ public class Game extends Applet implements Runnable{
 				JOptionPane.showMessageDialog(null, bw[0] + " black " + bw[1] + " white");
 			}
 		}
+		
 	}
 }
